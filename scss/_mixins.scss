@@ -1,0 +1,589 @@
+@import '_variables';
+
+// css reset
+@mixin css_reset {
+  /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol,
+  ul {
+    list-style: none;
+  }
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+}
+
+//handle directional padding and margin increment
+@mixin get_fractional_Spacing {
+  @each $type in $spacing-type {
+    // padding or margin css short hand
+    @for $i from 1 to 6 {
+      .#{nth($type, 1)}-#{$i} {
+        #{nth($type, 2)}: nth($spacing-size, $i) !important;
+      }
+
+      // media queries implementation
+      @for $j from 1 to 5 {
+        .#{nth($type, 1)}-#{nth($media-queries-list,$j)}-#{$i} {
+          @include media-queries(#{nth($media-queries-list, $j)}) {
+            #{nth($type, 2)}: nth($spacing-size, $i) !important;
+          }
+        }
+      }
+    }
+
+    // padding or margin css long hand
+    @each $dir in $directions {
+      @for $i from 1 to 7 {
+        @if ($i != 6) {
+          @if (nth($dir, 1) == 'x') {
+            .#{nth($type, 1)}#{nth($dir,1)}-#{$i} {
+              @for $j from 1 to 3 {
+                #{nth($type,2)}-#{nth(nth($dir,2),$j)}: nth(
+                  $spacing-size,
+                  $i
+                ) !important;
+              }
+            }
+
+            // media queries implementation
+            @for $k from 1 to 5 {
+              .#{nth($type, 1)}#{nth($dir,1)}-#{nth($media-queries-list,$k)}-#{$i} {
+                @include media-queries(#{nth($media-queries-list, $k)}) {
+                  @for $j from 1 to 3 {
+                    #{nth($type,2)}-#{nth(nth($dir,2),$j)}: nth(
+                      $spacing-size,
+                      $i
+                    ) !important;
+                  }
+                }
+              }
+            }
+          } @else if (nth($dir, 1) == 'y') {
+            .#{nth($type, 1)}#{nth($dir,1)}-#{$i} {
+              @for $j from 1 to 3 {
+                #{nth($type,2)}-#{nth(nth($dir,2),$j)}: nth(
+                  $spacing-size,
+                  $i
+                ) !important;
+              }
+            }
+
+            // media queries implementation
+            @for $k from 1 to 5 {
+              .#{nth($type, 1)}#{nth($dir,1)}-#{nth($media-queries-list,$k)}-#{$i} {
+                @include media-queries(#{nth($media-queries-list, $k)}) {
+                  @for $j from 1 to 3 {
+                    #{nth($type,2)}-#{nth(nth($dir,2),$j)}: nth(
+                      $spacing-size,
+                      $i
+                    ) !important;
+                  }
+                }
+              }
+            }
+          } @else {
+            .#{nth($type, 1)}#{nth($dir,1)}-#{$i} {
+              #{nth($type,2)}-#{nth($dir,2)}: nth($spacing-size, $i) !important;
+            }
+
+            // media queries implementation
+            @for $k from 1 to 5 {
+              .#{nth($type, 1)}#{nth($dir,1)}-#{nth($media-queries-list,$k)}-#{$i} {
+                @include media-queries(#{nth($media-queries-list, $k)}) {
+                  #{nth($type,2)}-#{nth($dir,2)}: nth(
+                    $spacing-size,
+                    $i
+                  ) !important;
+                }
+              }
+            }
+          }
+        } @else {
+          @if (nth($dir, 1) == 'x') {
+            .#{nth($type, 1)}#{nth($dir,1)}-#{nth($spacing-size, $i)} {
+              @for $j from 1 to 3 {
+                #{nth($type,2)}-#{nth(nth($dir,2),$j)}: nth(
+                  $spacing-size,
+                  $i
+                ) !important;
+              }
+            }
+
+            // media queries implementation
+            @for $k from 1 to 5 {
+              .#{nth($type, 1)}#{nth($dir,1)}-#{nth($media-queries-list,$k)}-#{nth($spacing-size, $i)} {
+                @include media-queries(#{nth($media-queries-list, $k)}) {
+                  @for $j from 1 to 3 {
+                    #{nth($type,2)}-#{nth(nth($dir,2),$j)}: nth(
+                      $spacing-size,
+                      $i
+                    ) !important;
+                  }
+                }
+              }
+            }
+          } @else if (nth($dir, 1) == 'y') {
+            .#{nth($type, 1)}#{nth($dir,1)}-#{nth($spacing-size, $i)} {
+              @for $j from 1 to 3 {
+                #{nth($type,2)}-#{nth(nth($dir,2),$j)}: nth(
+                  $spacing-size,
+                  $i
+                ) !important;
+              }
+            }
+
+            // media queries implementation
+            @for $k from 1 to 5 {
+              .#{nth($type, 1)}#{nth($dir,1)}-#{nth($media-queries-list,$k)}-#{nth($spacing-size, $i)} {
+                @include media-queries(#{nth($media-queries-list, $k)}) {
+                  @for $j from 1 to 3 {
+                    #{nth($type,2)}-#{nth(nth($dir,2),$j)}: nth(
+                      $spacing-size,
+                      $i
+                    ) !important;
+                  }
+                }
+              }
+            }
+          } @else {
+            .#{nth($type, 1)}#{nth($dir,1)}-#{nth($spacing-size, $i)} {
+              #{nth($type,2)}-#{nth($dir,2)}: nth($spacing-size, $i) !important;
+            }
+
+            // media queries implementation
+            @for $k from 1 to 5 {
+              .#{nth($type, 1)}#{nth($dir,1)}-#{nth($media-queries-list,$k)}-#{nth($spacing-size, $i)} {
+                @include media-queries(#{nth($media-queries-list, $k)}) {
+                  #{nth($type,2)}-#{nth($dir,2)}: nth(
+                    $spacing-size,
+                    $i
+                  ) !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//text-colors
+@mixin text-colors {
+  @each $item in $color-map {
+    .text-#{nth($item,1)} {
+      color: #{nth($item, 2)} !important;
+    }
+  }
+}
+
+//text-align
+@mixin text-align {
+  @for $i from 1 to 5 {
+    .text-#{nth($text-align-list,$i)} {
+      text-align: #{nth($text-align-list, $i)} !important;
+    }
+
+    // media queries implementation
+    @for $k from 1 to 5 {
+      .text-#{nth($media-queries-list,$k)}-#{nth($text-align-list,$i)} {
+        @include media-queries(#{nth($media-queries-list, $k)}) {
+          text-align: #{nth($text-align-list, $i)} !important;
+        }
+      }
+    }
+  }
+}
+
+//background colors
+@mixin background-colors {
+  @each $color in $color-map {
+    .#{nth($background-short-hand, 1)}-#{nth($color,1)} {
+      #{nth($background-short-hand, 2)}: nth($color, 2) !important;
+    }
+  }
+}
+
+//display property types
+@mixin displays {
+  @each $display in $displays-type {
+    .#{nth($display-short-hand,1)}-#{$display} {
+      #{nth($display-short-hand,2)}: $display !important;
+    }
+
+    // media queries implementation
+    @for $k from 1 to 5 {
+      .#{nth($display-short-hand,1)}-#{nth($media-queries-list,$k)}-#{$display} {
+        @include media-queries(#{nth($media-queries-list, $k)}) {
+          #{nth($display-short-hand,2)}: $display !important;
+        }
+      }
+    }
+  }
+}
+
+//display flex properties
+@mixin flex-directions {
+  @for $i from 1 to 5 {
+    .flex-#{nth($flex-direction-list,$i)} {
+      flex-direction: #{nth($flex-direction-list, $i)} !important;
+    }
+
+    // media queries implementation
+    @for $k from 1 to 5 {
+      .flex-#{nth($media-queries-list,$k)}-#{nth($flex-direction-list,$i)} {
+        @include media-queries(#{nth($media-queries-list, $k)}) {
+          flex-direction: #{nth($flex-direction-list, $i)} !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin flex-wrap {
+  @for $i from 1 to 4 {
+    .flex-#{nth($flex-wrap-list,$i)} {
+      flex-wrap: #{nth($flex-wrap-list, $i)} !important;
+    }
+
+    // media queries implementation
+    @for $k from 1 to 5 {
+      .flex-#{nth($media-queries-list,$k)}-#{nth($flex-wrap-list,$i)} {
+        @include media-queries(#{nth($media-queries-list, $k)}) {
+          flex-wrap: #{nth($flex-wrap-list, $i)} !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin justify-content {
+  @each $item in $flex-justify-map {
+    .#{$flex-justify}-#{nth($item,1)} {
+      #{$flex-justify}: #{nth($item, 2)} !important;
+    }
+
+    // media queries implementation
+    @for $k from 1 to 5 {
+      .#{$flex-justify}-#{nth($media-queries-list,$k)}-#{nth($item,1)} {
+        @include media-queries(#{nth($media-queries-list, $k)}) {
+          #{$flex-justify}: #{nth($item, 2)} !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin align-items {
+  @for $i from 1 to 3 {
+    @if (#{nth($flex-align-list, $i)} == 'align-content') {
+      @each $value in $flex-align-content-map {
+        .#{nth($flex-align-list,$i)}-#{nth($value,1)} {
+          #{nth($flex-align-list,$i)}: #{nth($value, 2)} !important;
+        }
+
+        // media queries implementation
+        @for $k from 1 to 5 {
+          .#{nth($flex-align-list,$i)}-#{nth($media-queries-list,$k)}-#{nth($value,1)} {
+            @include media-queries(#{nth($media-queries-list, $k)}) {
+              #{nth($flex-align-list,$i)}: #{nth($value, 2)} !important;
+            }
+          }
+        }
+      }
+    } @else {
+      @each $value in $flex-align-map {
+        .#{nth($flex-align-list,$i)}-#{nth($value,1)} {
+          #{nth($flex-align-list,$i)}: #{nth($value, 2)} !important;
+        }
+
+        // media queries implementation
+        @for $k from 1 to 5 {
+          .#{nth($flex-align-list,$i)}-#{nth($media-queries-list,$k)}-#{nth($value,1)} {
+            @include media-queries(#{nth($media-queries-list, $k)}) {
+              #{nth($flex-align-list,$i)}: #{nth($value, 2)} !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// flex based grid system
+@mixin grid-unit-size($span) {
+  margin: $gutter-width/2;
+
+  @if ($span == $grid-columns-count) {
+    max-width: ($column-width * $span) + ($gutter-width * $span);
+  } @else {
+    width: ($column-width * $span) + ($gutter-width * ($span - 1));
+  }
+}
+
+//grid column span
+@mixin grid-column-settings {
+  @for $i from 1 to 13 {
+    .col-#{$i} {
+      @include grid-unit-size($i);
+    }
+
+    // media queries implementation
+    @for $j from 1 to 5 {
+      #{nth($media-queries-breakpoint-specificity,$j)}.col-#{nth($media-queries-list,$j)}-#{$i} {
+        @include media-queries(#{nth($media-queries-list, $j)}) {
+          @include grid-unit-size($i);
+        }
+      }
+    }
+  }
+}
+
+// offset column by a precise number
+@mixin offset-column-settings {
+  // class to reset to offset
+  .offset-0 {
+    margin-left: $gutter-width / 2;
+  }
+
+  // generating offset classes from 1 to
+  @for $i from 1 to 13 {
+    .offset-#{$i} {
+      margin-left: ($column-width * $i) + ($gutter-width * ($i - 1));
+    }
+
+    // media queries implementation
+    @for $j from 1 to 5 {
+      .offset-#{nth($media-queries-list,$j)}-#{$i} {
+        @include media-queries(#{nth($media-queries-list, $j)}) {
+          margin-left: ($column-width * $i) + ($gutter-width * ($i - 1));
+        }
+      }
+    }
+  }
+}
+
+// grid column order
+@mixin column-order {
+  @for $i from 1 to 13 {
+    .order-#{$i} {
+      order: #{$i};
+    }
+
+    // media queries implementation
+    @for $j from 1 to 5 {
+      .order-#{nth($media-queries-list,$j)}-#{$i} {
+        @include media-queries(#{nth($media-queries-list, $j)}) {
+          order: #{$i} !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin borders {
+  .border {
+    border: solid 1px #dee2e6;
+  }
+  .border-0 {
+    border: none;
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .rounded-0 {
+    border-radius: 0;
+  }
+
+  .rounded-circle {
+    border-radius: 50%;
+  }
+
+  .rounded-pill {
+    border-radius: 50rem;
+  }
+
+  .rounded-sm {
+    border-radius: 0.2rem;
+  }
+
+  .rounded-lg {
+    border-radius: 0.3rem;
+  }
+
+  @each $direction in $directions {
+    $border-radius-single-side-map: (
+      top: top-left top-right,
+      right: top-right bottom-right,
+      bottom: bottom-left bottom-right,
+      left: top-left bottom-left,
+    );
+
+    @if (#{nth($direction, 1)} != 'x' and #{nth($direction, 1)} != 'y') {
+      .border-#{nth($direction,2)} {
+        border-#{nth($direction,2)}: solid 1px #dee2e6;
+      }
+      .border-#{nth($direction,2)}-0 {
+        border-#{nth($direction,2)}: none;
+      }
+
+      .rounded-#{nth($direction,2)} {
+        border-#{nth(map-get($border-radius-single-side-map,#{nth($direction,2)}),1)}-radius: 0.25rem;
+        border-#{nth(map-get($border-radius-single-side-map,#{nth($direction,2)}),2)}-radius: 0.25rem;
+      }
+    }
+  }
+
+  @each $color in $color-map {
+    .border-#{nth($color,1)} {
+      border-color: #{nth($color, 2)};
+    }
+  }
+}
+
+//media queries test
+@mixin media-queries($view-port) {
+  // xs - Extra small devices (portrait phones, less than 576px)
+  // s - Small devices (landscape phones, 576px and up)
+  // md - Medium devices (tablets, 768px and up)
+  // lg - Large devices (desktops, 992px and up)
+  // xl - Extra large devices (large desktops, 1200px and up)
+  @if ($view-port == 'sm') {
+    @media screen and (min-width: 576px) {
+      @content;
+    }
+  } @else if($view-port == 'md') {
+    @media screen and (min-width: 768px) {
+      @content;
+    }
+  } @else if($view-port == 'lg') {
+    @media screen and (min-width: 992px) {
+      @content;
+    }
+  } @else if($view-port == 'xl') {
+    @media screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+}

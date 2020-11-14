@@ -1,0 +1,95 @@
+//main font
+$main-font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// main colors
+
+$primary: #247bfc;
+$secondary: #6c757d;
+$success: #28a745;
+$warning: #ffc12c;
+$info: #18a2b8;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
+$white: #fff;
+$black: #000;
+$gold: #cc9543;
+
+$background-short-hand: bg background;
+$color-map: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'success': $success,
+  'warning': $warning,
+  'info': $info,
+  'danger': $danger,
+  'light': $light,
+  'dark': $dark,
+  'black': $black,
+  'gold': $gold,
+);
+
+//text align
+$text-align-list: center, left, right, justify;
+
+// margin and padding settings
+$spacing-size: 0.25rem, 0.5rem, 1rem, 1.5rem, 3rem, auto;
+$spacing-type: (
+  p: padding,
+  m: margin,
+);
+$x-directions: left, right;
+$y-directions: top, bottom;
+$directions: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+  x: $x-directions,
+  y: $y-directions,
+);
+
+//display settings
+$display-short-hand: 'd', 'display';
+$displays-type: none, block, inline, inline-block, table, grid, flex;
+
+//media queries
+$media-queries-list: 'sm', 'md', 'lg', 'xl';
+// adding specificity for media queries grid layout
+$media-queries-breakpoint-specificity: 'div', '.row > ', '.row > div',
+  'div.row > div';
+
+// display flex settings
+$flex-direction-list: row, row-reverse, column, column-reverse;
+$flex-wrap-list: nowrap, wrap, wrap-reverse;
+$flex-justify: 'justify-content';
+$flex-justify-map: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  evenly: space-evenly,
+);
+$flex-align-list: align-items align-content align-self;
+$flex-align-map: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch,
+  baseline: baseline,
+);
+
+$flex-align-content-map: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch,
+  between: space-between,
+  around: space-around,
+);
+
+// flex based grid system
+$grid-columns-count: 12;
+$column-width: 65px;
+$gutter-width: 30px;
