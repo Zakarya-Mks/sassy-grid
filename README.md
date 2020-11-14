@@ -71,7 +71,7 @@ its fully responsive and easy to implement,
 ### text utilities
 * text colors
   - **text-[primary | secondary | success | warning | info | danger | light | dark | black | gold]**: change the color property based on a predefined colors theme.
-*text position
+* text position
   - **text-[center | left | right | justify]**: change the text-align property.
   - **text-[sm | md | lg | xl]-[center | left | right | justify]**: change the text-align property based on the device width.
 
