@@ -1,0 +1,240 @@
+$odin-text-color: #4a4a4ab3;
+$subheading-font-size: 1.125rem;
+$nav-item-fnt-sz: 1.1rem;
+$nav-brand-fnt-sz: 2rem;
+
+
+@import '_variables';
+@import '_mixins';
+@import '_utilities';
+
+@font-face {
+  font-family: 'norse';
+  src: url(./src/norse/Norse.otf);
+}
+@font-face {
+  font-family: 'norse-bold';
+  src: url(./src/norse/Norsebold.otf);
+}
+
+body {
+  font-family: $main-font-family;
+  color: $odin-text-color;
+}
+
+//main navigation
+
+.navbar {
+  @mixin nav-link-decoration {
+    color: $odin-text-color;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  // for the phone burger menu
+  > img {
+    height: 50px;
+  }
+
+  font-family: $main-font-family;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+
+  .navbar-brand {
+    @include nav-link-decoration;
+    font-size: $nav-brand-fnt-sz;
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 70px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    span {
+      margin-left: 1rem;
+      font-size: $nav-brand-fnt-sz;
+      color: $gold;
+      font-family: 'norse-bold';
+    }
+  }
+
+  .navbar-nav {
+    display: flex;
+    margin-left: auto;
+
+    .nav-item {
+      padding: 0.5rem;
+      .nav-link {
+        @include nav-link-decoration;
+        font-size: $nav-item-fnt-sz;
+      }
+    }
+  }
+}
+
+.h2-heading {
+  font-weight: 700;
+  color: $dark;
+  letter-spacing: 0.2px;
+  line-height: 1.8;
+  margin-bottom: 60px;
+}
+.h4-heading {
+  font-size: $subheading-font-size; //
+  color: $dark; //
+  font-weight: bold; //
+  letter-spacing: 0.2px; //
+}
+.paragraph {
+  font-size: $subheading-font-size;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+}
+
+// hero section
+.hero {
+  .hero_heading {
+    color: $gold;
+    font-size: 2.3rem;
+    letter-spacing: 0.4px;
+    font-family: $main-font-family;
+  }
+
+  .hero_sub_heading {
+    font-size: $subheading-font-size;
+    font-weight: lighter;
+    font-weight: 300;
+  }
+}
+
+.HowItWork {
+  .HowItWork_heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .HowItWork_text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    letter-spacing: 0.2px;
+  }
+}
+
+.howItWorkTiles {
+  img {
+    height: 165px;
+  }
+
+  h4 {
+    @extend .h4-heading;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    @extend .paragraph;
+  }
+}
+
+.curriculumDetails {
+  background-color: #f3f3f3;
+
+  .row {
+    justify-content: center;
+  }
+
+  [class^='col'] {
+    cursor: pointer;
+    background-color: $light;
+    box-shadow: 0 7px 16px 0 rgba(0, 0, 0, 0.05);
+    // padding: 23px 46px 25px;
+  }
+
+  h2 {
+    @extend .h2-heading;
+  }
+
+  img {
+    width: 160px;
+  }
+
+  h4 {
+    @extend .h4-heading;
+    margin: 18px 0 8px 0;
+
+    text-transform: uppercase;
+  }
+}
+
+.SuccessStories {
+  background: linear-gradient(360deg, #f3f3f3, #fff);
+
+  h2 {
+    @extend .h2-heading;
+  }
+
+  .success_story {
+    .photo {
+      padding: 0 2rem;
+    }
+
+    h4 {
+      @extend .h4-heading;
+      margin: 18px 0 8px 0;
+      color: $gold;
+      font-weight: normal;
+      text-transform: capitalize;
+
+      &:hover {
+        color: $black;
+      }
+    }
+
+    p {
+      @extend .paragraph;
+    }
+  }
+  img {
+    margin-top: 18px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+footer {
+  img {
+    height: 70px;
+  }
+
+  span {
+    margin-left: 1rem;
+    font-size: $nav-brand-fnt-sz;
+    color: $gold;
+    font-family: 'norse-bold';
+  }
+  ul {
+    column-count: 2;
+
+    li {
+      color: $odin-text-color;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: $nav-item-fnt-sz;
+      line-height: 1.5;
+      text-transform: capitalize;
+      &:hover {
+        color: $black;
+        cursor: pointer;
+      }
+    }
+  }
+}

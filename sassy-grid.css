@@ -3750,6 +3750,7 @@ table {
 .row {
   margin: 15px;
   max-width: 1140px;
+  width: 100%;
   display: flex;
   flex-flow: row wrap;
   margin-left: auto !important;
@@ -4122,12 +4123,14 @@ table {
 .col-12 {
   margin: 15px;
   max-width: 1140px;
+  width: 100%;
 }
 
 @media screen and (min-width: 576px) {
   div.col-sm-12 {
     margin: 15px;
     max-width: 1140px;
+    width: 100%;
   }
 }
 
@@ -4135,6 +4138,7 @@ table {
   .row > .col-md-12 {
     margin: 15px;
     max-width: 1140px;
+    width: 100%;
   }
 }
 
@@ -4142,6 +4146,7 @@ table {
   .row > div.col-lg-12 {
     margin: 15px;
     max-width: 1140px;
+    width: 100%;
   }
 }
 
@@ -4149,6 +4154,7 @@ table {
   div.row > div.col-xl-12 {
     margin: 15px;
     max-width: 1140px;
+    width: 100%;
   }
 }
 

@@ -437,6 +437,7 @@
 
   @if ($span == $grid-columns-count) {
     max-width: ($column-width * $span) + ($gutter-width * $span);
+    width: 100%;
   } @else {
     width: ($column-width * $span) + ($gutter-width * ($span - 1));
   }
