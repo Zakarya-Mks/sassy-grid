@@ -1,0 +1,177 @@
+@font-face {
+  font-family: "norse";
+  src: url(./src/norse/Norse.otf);
+}
+@font-face {
+  font-family: "norse-bold";
+  src: url(./src/norse/Norsebold.otf);
+}
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #4a4a4ab3;
+}
+
+.navbar {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.navbar > img {
+  height: 50px;
+}
+.navbar .navbar-brand {
+  color: #4a4a4ab3;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+.navbar .navbar-brand:hover {
+  color: #000;
+}
+.navbar .navbar-brand img {
+  height: 70px;
+}
+.navbar .navbar-brand img:hover {
+  cursor: pointer;
+}
+.navbar .navbar-brand span {
+  margin-left: 1rem;
+  font-size: 2rem;
+  color: #cc9543;
+  font-family: "norse-bold";
+}
+.navbar .navbar-nav {
+  display: flex;
+  margin-left: auto;
+}
+.navbar .navbar-nav .nav-item {
+  padding: 0.5rem;
+}
+.navbar .navbar-nav .nav-item .nav-link {
+  color: #4a4a4ab3;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.navbar .navbar-nav .nav-item .nav-link:hover {
+  color: #000;
+}
+
+.h2-heading, .SuccessStories h2, .curriculumDetails h2 {
+  font-weight: 700;
+  color: #343a40;
+  letter-spacing: 0.2px;
+  line-height: 1.8;
+  margin-bottom: 60px;
+}
+
+.h4-heading, .SuccessStories .success_story h4, .curriculumDetails h4, .howItWorkTiles h4 {
+  font-size: 1.125rem;
+  color: #343a40;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+}
+
+.paragraph, .SuccessStories .success_story p, .howItWorkTiles p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+}
+
+.hero .hero_heading {
+  color: #cc9543;
+  font-size: 2.3rem;
+  letter-spacing: 0.4px;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.hero .hero_sub_heading {
+  font-size: 1.125rem;
+  font-weight: lighter;
+  font-weight: 300;
+}
+
+.HowItWork .HowItWork_heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.HowItWork .HowItWork_text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+  width: 50%;
+}
+
+.howItWorkTiles img {
+  height: 165px;
+}
+.howItWorkTiles h4 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.curriculumDetails {
+  background-color: #f3f3f3;
+}
+.curriculumDetails .row {
+  justify-content: center;
+}
+.curriculumDetails [class^=col] {
+  cursor: pointer;
+  background-color: #f8f9fa;
+  box-shadow: 0 7px 16px 0 rgba(0, 0, 0, 0.05);
+}
+.curriculumDetails img {
+  width: 160px;
+}
+.curriculumDetails h4 {
+  margin: 18px 0 8px 0;
+  text-transform: uppercase;
+}
+
+.SuccessStories {
+  background: linear-gradient(360deg, #f3f3f3, #fff);
+}
+.SuccessStories .success_story .photo {
+  padding: 0 2rem;
+}
+.SuccessStories .success_story h4 {
+  margin: 18px 0 8px 0;
+  color: #cc9543;
+  font-weight: normal;
+  text-transform: capitalize;
+}
+.SuccessStories .success_story h4:hover {
+  color: #000;
+}
+.SuccessStories img {
+  margin-top: 18px;
+  width: 50px;
+  height: 50px;
+}
+
+footer img {
+  height: 70px;
+}
+footer span {
+  margin-left: 1rem;
+  font-size: 2rem;
+  color: #cc9543;
+  font-family: "norse-bold";
+}
+footer ul {
+  column-count: 2;
+}
+footer ul li {
+  color: #4a4a4ab3;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  text-transform: capitalize;
+}
+footer ul li:hover {
+  color: #000;
+  cursor: pointer;
+}
