@@ -31,7 +31,7 @@ its fully responsive and easy to implement,
     - **offset-0 | .offset-1 to .offset-12**: offset a column by (the index) number of column.
     - **offset-[sm | md | lg | xl]-\***: offset the column based on the device width \*(from 1 to 12).
 
-### flex box
+### flex box properties
 
 - flex-direction
   - **flex-[row | row-reverse | column | column-reverse]**: change the flex-box flex-direction property.
